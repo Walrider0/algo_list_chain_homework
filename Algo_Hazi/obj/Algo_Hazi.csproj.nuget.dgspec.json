@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\UpgradePC\\Desktop\\algo_hazi\\Algo_Hazi\\Algo_Hazi.csproj": {}
+    "C:\\Users\\UpgradePC\\Documents\\Projects\\dotNET\\algo_list_chain_homework\\Algo_Hazi\\Algo_Hazi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\UpgradePC\\Desktop\\algo_hazi\\Algo_Hazi\\Algo_Hazi.csproj": {
+    "C:\\Users\\UpgradePC\\Documents\\Projects\\dotNET\\algo_list_chain_homework\\Algo_Hazi\\Algo_Hazi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\UpgradePC\\Desktop\\algo_hazi\\Algo_Hazi\\Algo_Hazi.csproj",
+        "projectUniqueName": "C:\\Users\\UpgradePC\\Documents\\Projects\\dotNET\\algo_list_chain_homework\\Algo_Hazi\\Algo_Hazi.csproj",
         "projectName": "Algo_Hazi",
-        "projectPath": "C:\\Users\\UpgradePC\\Desktop\\algo_hazi\\Algo_Hazi\\Algo_Hazi.csproj",
+        "projectPath": "C:\\Users\\UpgradePC\\Documents\\Projects\\dotNET\\algo_list_chain_homework\\Algo_Hazi\\Algo_Hazi.csproj",
         "packagesPath": "C:\\Users\\UpgradePC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\UpgradePC\\Desktop\\algo_hazi\\Algo_Hazi\\obj\\",
+        "outputPath": "C:\\Users\\UpgradePC\\Documents\\Projects\\dotNET\\algo_list_chain_homework\\Algo_Hazi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Algo_Hazi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5e146b39a34a4a581690b46f57b1e5fa67b4e90f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Algo_Hazi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Algo_Hazi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

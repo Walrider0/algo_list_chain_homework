@@ -54,6 +54,104 @@
             return 0;
         }
 
+
+        public void BeszurElejere(int hely,  int kulcs)
+        {
+            A[hely].Kulcs = kulcs;
+            A[hely].Elo = 0;
+            A[hely].Kov = Fej;
+
+            if (Fej != 0)
+                A[Fej].Elo = hely;
+
+            Fej = hely;
+        }
+
+        public void BeszurVegere(int hely, int kulcs)
+        {
+            if (Fej == 0)
+            {
+                A[hely].Kulcs = kulcs;
+                A[hely].Elo = 0;
+                A[hely].Kov = 0;
+                Fej = hely;
+            }
+            else
+            {
+                int p = Fej;
+                while (A[p].Kov != 0)
+                {
+                    p = A[p].Kov;
+                }
+                A[hely].Kulcs = kulcs;
+                A[hely].Elo = p;
+                A[hely].Kov = 0;
+                A[p].Kov = hely;
+            }
+        }
+
+        public void BeszurUtan(int elozo, int hely, int kulcs)
+        {
+            int kov = A[elozo].Kov;
+
+            A[hely].Kulcs = kulcs;
+            A[hely].Elo = elozo;
+            A[hely].Kov = kov;
+
+            A[elozo].Kov = hely;
+            if (kov != 0)
+                A[kov].Elo = hely;
+        }
+
+        public void TorolKozepso(int hely)
+        {
+            int elo = A[hely].Elo;
+            int kov = A[hely].Kov;
+
+            A[elo].Kov = kov;
+            A[kov].Elo = elo;
+        }
+
+        public void TorolElso()
+        {
+            int uj = A[Fej].Kov;
+            if (uj != 0)
+                A[uj].Elo = 0;
+            Fej = uj;
+        }
+
+        public void TorolUtolso()
+        {
+            int p = Fej;
+            while (A[p].Kov != 0)
+            {
+                p = A[p].Kov;
+            }
+
+            int elo = A[p].Elo;
+            if (elo == 0)
+                Fej = 0;
+            else
+                A[elo].Kov = 0;
+        }
+
+        public bool TorolKulcs(int kulcs)
+        {
+            int p = Keres(kulcs);
+            if (p == 0)
+                return false;
+
+            if (A[p].Elo == 0)
+                TorolElso();
+            else if (A[p].Kov == 0)
+                TorolUtolso();
+            else
+                TorolKozepso(p);
+
+            return true;
+
+        }
+
     }
 
     internal class Program
