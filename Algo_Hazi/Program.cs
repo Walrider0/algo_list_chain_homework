@@ -54,7 +54,7 @@
             return 0;
         }
 
-
+        #region 2. Feladat
         public void BeszurElejere(int hely,  int kulcs)
         {
             A[hely].Kulcs = kulcs;
@@ -151,13 +151,105 @@
             return true;
 
         }
+        #endregion
+    }
+
+    internal class TombosVerem
+    {
+        public int[] A;
+        public int Teto;
+        public int Meret;
+
+        public TombosVerem(int meret)
+        {
+            Meret = meret;
+            A = new int[meret + 1];
+            Teto = 0;
+        }
+
+        public bool VeremMegtelt()
+        {
+            if (Teto == Meret)
+                return true;
+
+            return false;
+        }
+
+        public bool UresVerem()
+        {
+            if (Teto == 0)
+                return true;
+
+            return false;
+        }
+
+        public string Verembe(int ertek)
+        {
+            if (VeremMegtelt())
+                return "Túlcsordulás !";
+
+            Teto++;
+            A[Teto] = ertek;
+            return "Rendben !";
+        }
+
+        public (int? Ertek, string Hibajelzes) Verembol()
+        {
+            if (UresVerem())
+                return (null, "alulcsordulás");
+
+            int ertek = A[Teto];
+            Teto--;
+            return (ertek, "rendben");
+        }
 
     }
 
+    internal struct Rekesz
+    {
+        public int Kulcs;
+        public int Kov;
+    }
+
+    internal class SzabadTarolo
+    {
+        public Rekesz[] A;
+        public int Szabad;
+
+        public SzabadTarolo(int meret)
+        {
+            A = new Rekesz[meret + 1];
+
+            for (int i = 0; i < meret; i++)
+            {
+                A[i].Kov = i + 1;
+            }
+            A[meret].Kov = 0;
+            Szabad = 1;
+        }
+
+        public int ObjektumotLefoglal()
+        {
+            if (Szabad == 0)
+                return 0;
+
+            int hely = Szabad;
+            Szabad = A[hely].Kov;
+            A[hely].Kov = 0;
+            return hely;
+        }
+
+        public void ObjektumotFelszabadit(int hely)
+        {
+            A[hely].Kov = Szabad;
+            Szabad = hely;
+        }
+    }
     internal class Program
     {
         static void Main(string[] args)
         {
+            // 1. Feladat Tesztelés
             #region Üres lista
             TombosLista empty = new TombosLista(10);
             Console.WriteLine(empty.Fej);
@@ -185,6 +277,20 @@
             Console.Clear();
             #endregion
 
+            // 3. Feladat Tesztelés
+            #region 6 Rekeszes
+            SzabadTarolo szt = new SzabadTarolo(6);
+       
+            Console.WriteLine(szt.ObjektumotLefoglal());
+            Console.WriteLine(szt.ObjektumotLefoglal());
+            szt.ObjektumotFelszabadit(1);
+            szt.ObjektumotFelszabadit(2);
+            Console.WriteLine(szt.ObjektumotLefoglal());
+            Console.WriteLine(szt.ObjektumotLefoglal());
+
+            Console.ReadKey();
+            Console.Clear();
+            #endregion
         }
     }
 }
