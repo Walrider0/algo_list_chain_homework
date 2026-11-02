@@ -245,6 +245,141 @@
             Szabad = hely;
         }
     }
+
+    internal class TombosSor
+    {
+        public int[] A;
+        public int Meret;
+        public int Fej;
+        public int Vege;
+
+        public TombosSor(int meret)
+        {
+            Meret = meret;
+            A = new int[meret + 1];
+            Fej = 1;
+            Vege = 1;
+        }
+
+        public int KovetkezoIndex(int i)
+        {
+            if (i == Meret)
+                return 1;
+            return i + 1;
+        }
+
+        public bool UresSor()
+        {
+            return Fej == Vege;
+        }
+
+        public bool SorMegtelt()
+        {
+            return KovetkezoIndex(Vege) == Fej;
+        }
+
+        public string Sorba(int ertek)
+        {
+            if (SorMegtelt())
+                return "tele sor";
+
+            A[Vege] = ertek;
+            Vege = KovetkezoIndex(Vege);
+            return "sikeres beszúrás";
+        }
+
+        public (int? Ertek, string Hibajelzes) Sorbol()
+        {
+            if (UresSor())
+                return (null, "üres sor");
+
+            int ertek = A[Fej];
+            Fej = KovetkezoIndex(Fej);
+            return (ertek, "sikeres eltávolítás");
+        }
+
+        public int[] SorTartalma()
+        {
+            List<int> lista = new List<int>();
+            int i = Fej;
+            while (i != Vege)
+            {
+                lista.Add(A[i]);
+                i = KovetkezoIndex(i);
+            }
+            return lista.ToArray();
+        }
+    }
+
+    public class Rekurzio
+    {
+        public static long Summa(int n)
+        {
+            long osszeg = 0;
+            for (int i = 1; i <= n; i++)
+                osszeg += i;
+            return osszeg;
+        }
+
+        public static long RekSumma(int n)
+        {
+            if (n == 1)
+                return 1;
+            return n + RekSumma(n - 1);
+        }
+
+        public static long RekSummaIntervallum(int m, int n)
+        {
+            if (m == n)
+                return n;
+            return n + RekSummaIntervallum(m, n - 1);
+        }
+
+        public static int Euklidesz(int a, int b)
+        {
+            if (b == 0)
+                return a;
+            return Euklidesz(b, a % b);
+        }
+
+
+        // 6. Feladat
+        public static long RekSum(int m, int n)
+        {
+            if (m == n)
+                return m;
+            int k = (m + n) / 2;
+            return RekSum(m, k) + RekSum(k + 1, n);
+        }
+
+       
+        public static long Fibonacci(int n)
+        {
+            if (n == 0)
+                return 0;
+            if (n == 1)
+                return 1;
+            return Fibonacci(n - 1) + Fibonacci(n - 2);
+        }
+
+   
+        public static int BinKerTomb(int[] A, int i, int j, int k)
+        {
+            if (j - i <= 1)
+                return -1;
+            int s = (i + j) / 2;
+            if (A[s] == k)
+                return s;
+            if (k < A[s])
+                return BinKerTomb(A, i, s, k);
+            return BinKerTomb(A, s, j, k);
+        }
+
+
+    }
+
+
+
     internal class Program
     {
         static void Main(string[] args)
